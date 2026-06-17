@@ -2,6 +2,9 @@ import pandas as pd
 import lightgbm as lgb
 
 test_data = pd.read_csv('/Users/dmitrii/PycharmProjects/Titanic_AI_project/titanic/test.csv')
+import joblib
+
+
 
 
 passenger_ids = test_data['PassengerId']
@@ -64,3 +67,7 @@ submission = pd.DataFrame({
 
 submission.to_csv('submission.csv', index=False)
 print("✅ submission.csv created!")
+
+# После обучения pipeline
+joblib.dump(model, 'models/titanic_pipeline.pkl')
+print("Модель сохранена")
