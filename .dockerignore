@@ -1,0 +1,48 @@
+# Git
+.git
+.gitignore
+
+# Локальные зависимости (загружаются внутри контейнера)
+node_modules/
+bower_components/
+vendor/
+
+# Локальные виртуальные окружения и кэш Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+.env/
+env/
+.pytest_cache/
+
+# Секреты и конфигурационные файлы
+.env
+*.pem
+*.key
+.aws/
+.gcloud/
+
+# Логи и кэш
+*.log
+.npm/
+.eslintcache
+
+# Специфичные папки IDE и редакторов
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# Папки сборки и временные файлы
+dist/
+build/
+out/
+.next/
+.nuxt/
+tmp/

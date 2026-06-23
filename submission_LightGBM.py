@@ -69,5 +69,5 @@ submission.to_csv('submission.csv', index=False)
 print("✅ submission.csv created!")
 
 # После обучения pipeline
-joblib.dump(model, 'models/titanic_pipeline.pkl')
+joblib.dump(model, 'app/models/titanic_pipeline.pkl')
 print("Модель сохранена")

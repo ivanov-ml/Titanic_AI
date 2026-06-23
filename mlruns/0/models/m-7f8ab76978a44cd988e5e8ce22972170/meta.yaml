@@ -1,0 +1,10 @@
+artifact_location: mlflow-artifacts:/0/models/m-7f8ab76978a44cd988e5e8ce22972170/artifacts
+creation_timestamp: 1782210342043
+experiment_id: '0'
+last_updated_timestamp: 1782210346803
+model_id: m-7f8ab76978a44cd988e5e8ce22972170
+model_type: ''
+name: titanic_lightgbm_model
+source_run_id: c213b8e32128490fa7cd6d68e5fcc8d8
+status: 2
+status_message: null
