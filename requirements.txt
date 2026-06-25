@@ -57,4 +57,4 @@ urllib3==2.6.3
 uvicorn==0.39.0
 xgboost==2.1.4
 zipp==3.23.0
-prometheus-client
+prometheus-client==0.21.0
