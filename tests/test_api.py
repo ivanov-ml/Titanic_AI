@@ -6,7 +6,7 @@ import requests
 client = TestClient(app)
 
 def test_predict_endpoint():
-    response = client.post("/predict", data={  # ← data, а не json!
+    response = client.post("/predict", data={
         "pclass": 3,
         "sex": "male",
         "age": 22,
@@ -16,5 +16,5 @@ def test_predict_endpoint():
         "embarked": "S"
     })
     assert response.status_code == 200
-    # Проверь, что возвращается, например, "prediction" или "probability"
-    assert "prediction" in response.text  # или response.json() если возвращаешь JSON
+    # Проверяем, что страница содержит слово "ВЫЖИВЕТ" или "НЕ ВЫЖИВЕТ"
+    assert "ВЫЖИВЕТ" in response.text or "НЕ ВЫЖИВЕТ" in response.text
