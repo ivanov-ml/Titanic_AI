@@ -4,8 +4,35 @@ import joblib
 import pandas as pd
 import numpy as np
 from pathlib import Path
+from fastapi import FastAPI, Response
+from prometheus_client import Counter, Histogram, generate_latest, CONTENT_TYPE_LATEST
+import time
 
 app = FastAPI(title="Titanic Survival Predictor")
+
+# Метрики
+REQUESTS = Counter('http_requests_total', 'Total HTTP requests', ['method', 'endpoint', 'status'])
+LATENCY = Histogram('http_request_duration_seconds', 'HTTP request latency')
+
+
+@app.middleware("http")
+async def metrics_middleware(request, call_next):
+    start = time.time()
+    response = await call_next(request)
+    duration = time.time() - start
+
+    REQUESTS.labels(
+        method=request.method,
+        endpoint=request.url.path,
+        status=response.status_code
+    ).inc()
+    LATENCY.observe(duration)
+    return response
+
+
+@app.get("/metrics")
+async def metrics():
+    return Response(generate_latest(), media_type=CONTENT_TYPE_LATEST)
 
 templates = Jinja2Templates(directory="templates")
 
